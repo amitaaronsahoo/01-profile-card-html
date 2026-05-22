@@ -1,0 +1,171 @@
+/* Global styles */
+/* Global styles
+   - This section sets page-level defaults: background color, font, and layout.
+   - Corresponding HTML: the entire document, e.g. <html> and <body> in index.html.
+	 See index.html: the <head> loads Poppins font and <body> starts on line 10.
+*/
+body {
+	/* light blue page background to give the card breathing room */
+	background-color: #e6f7ff; /* light, pleasant blue */
+
+	/* remove the default browser margin so we control spacing exactly */
+	margin: 0;
+
+	/* make the body at least the full viewport height so vertical centering works */
+	min-height: 100vh;
+
+	/* Use flexbox to stack header / main / footer vertically and center horizontally */
+	display: flex;
+	flex-direction: column; /* stack children (header, main, footer) top-to-bottom */
+	align-items: center;    /* center children horizontally */
+
+	/* center the stack vertically within the viewport */
+	justify-content: center;
+
+	/* padding so there's space on small viewports */
+	padding: 2rem;
+
+	/* use the Poppins font we loaded in index.html for a modern look */
+	font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+
+/* Profile card appearance
+   - Targets <section class="profile-card"> in index.html (line 18).
+   - Styles turn the section into a white card with padding, border, rounded corners, and shadow.
+*/
+.profile-card {
+	/* allow the card to be responsive but limit its maximum width */
+	width: 100%;
+	max-width: 420px;
+
+	/* white background so the card stands out from the light-blue page */
+	background: #ffffff;
+
+	/* subtle border to define the card edge */
+	border: 1px solid rgba(0, 0, 0, 0.08);
+
+	/* rounded corners for a modern card appearance */
+	border-radius: 12px;
+
+	/* drop shadow to lift the card off the page */
+	box-shadow: 0 8px 24px rgba(14, 30, 37, 0.08);
+
+	/* internal spacing so content doesn't touch the edges */
+	padding: 2rem;
+
+	/* center contents inside the card and stack them vertically */
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+
+/* Profile image styling
+   - Targets <img class="profile-image"> in index.html (line 19).
+   - Makes the image circular, constrains its size, and adds a thin border.
+*/
+.profile-image {
+	width: 120px;              /* fixed size keeps layout consistent */
+	height: 120px;             /* match width for perfect circle */
+	border-radius: 50%;        /* makes the square image round */
+	object-fit: cover;         /* crops the image to fill the circle without distortion */
+	object-position: center 15%; /* shift the crop slightly up to better center the face in typical profile photos */
+	margin-bottom: 1rem;       /* space between image and the text below */
+	border: 3px solid rgba(0,0,0,0.05); /* very light border for definition */
+}
+
+
+/* Headings and subheading
+   - <h1> in index.html (line 21) is the main heading (name).
+   - .title is a <p class="title"> (line 22) used as a subheading on this page.
+*/
+h1 {
+	color: #003366;           /* dark blue color for good contrast */
+	font-size: 2rem;          /* larger than normal text to emphasize the name */
+	text-align: center;       /* center the heading inside the card */
+	margin: 0.25rem 0;        /* reduce default heading margins so spacing feels tight */
+	font-weight: 600;         /* semi-bold for emphasis */
+}
+
+h2,
+.title {
+	color: #708090;           /* slate grey for the subheading */
+	font-size: 1.125rem;      /* slightly larger than body text but smaller than h1 */
+	text-align: center;       /* center-aligned to match the h1 */
+	margin: 0.25rem 0 0.75rem;/* small space above, larger space below */
+	font-weight: 400;         /* normal weight for subheading */
+}
+
+h3,
+.title {
+	color: #708090;           /* slate grey for the subheading */
+	font-size: 1.2rem;      /* slightly larger than body text but smaller than h1 */
+	text-align: center;       /* center-aligned to match the h1 */
+	margin: 0.25rem 0 0.75rem;/* small space above, larger space below */
+	font-weight: 400;         /* normal weight for subheading */
+}
+
+.bio {
+	text-align: center;       /* center the short bio paragraph */
+	color: #333;              /* dark grey for easy readability */
+	margin-top: 0.5rem;       /* separation from the subheading */
+}
+
+/* Remove bullets and left indentation from the websites list while keeping it a list */
+.profile-card ul {
+	list-style: none;         /* no bullet dots */
+	padding-left: 0;          /* remove default left indentation */
+	margin: 0.5rem 0 0;       /* keep a little space above the list */
+}
+
+.profile-card li {
+	margin: 0.35rem 0;        /* add space between each website item */
+	text-align: center;       /* keep the items visually centered in the card */
+}
+
+/* Favorite website links: remove underline and use a soft highlight on hover */
+.profile-card a {
+	color: #0b5394;
+	text-decoration: none;   /* removes the underline */
+	padding: 0.15rem 0.4rem; /* gives the hover background some room */
+	border-radius: 6px;
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.profile-card a:hover {
+	background-color: rgba(11, 83, 148, 0.12); /* subtle highlight */
+	color: #073763;
+}
+
+.profile-card a:focus-visible {
+	outline: 2px solid #073763;
+	outline-offset: 3px;
+	border-radius: 6px;
+}
+
+/* Footer styles
+   - The HTML footer element is at index.html lines 28-30.
+   - We make the footer match the horizontal centering of the card by constraining
+	 its max-width to the same value and centering its text.
+*/
+footer {
+	/* make the footer content align horizontally with the card above */
+	width: 100%;
+	max-width: 420px;         /* match .profile-card max-width */
+
+	/* give some breathing room between the card and the footer */
+	margin-top: 1.5rem;
+
+	/* center the text inside the footer */
+	text-align: center;
+
+	/* ensure footer sits visually as part of the centered column */
+	align-self: center;       /* explicit: center this flex child horizontally */
+}
+
+footer p {
+	margin: 0;                /* remove default paragraph margins for tight spacing */
+	color: rgba(0,0,0,0.6);   /* slightly muted text color for footer */
+	font-size: 0.9rem;        /* slightly smaller than body text */
+}
